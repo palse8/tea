@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*背景*/
+body{
+	background-color: #81B0F7;
+	width: 100%;
+}
+
+/*ヘッダー*/
+div#hedder{
+	height:75px;width:100%;margin-left:20px;margin-right:20px;
+}
+
+/*本文(サイドなし)*/
+div#main{
+	margin-top:10px;background-color:#FFFFFF;height:auto;width:95%;margin-left:20px;margin-right:20px;border: 1px solid #000000;
+}
+
+/*本文(右サイド有り)*/
+div#main1{
+	margin-top:10px;background-color:#FFFFFF;height:auto;width:68%;margin-left:20px;margin-right:20px;border: 1px solid #000000;
+}
+
+/*本文(両サイド有り)*/
+div#main2{
+	flaot:clear;margin-top:10px;background-color:#FFFFFF;height:auto;width:50%;margin-left:260px;margin-right:20px;border: 1px solid #000000;
+}
+
+/*サイド(右)*/
+div#side{
+	float:right;margin-top:10px;background-color:#FFFFFF;height:auto;width:25%;margin-left:20px;margin-right:20px;border: 1px solid #000000;padding-left:10px;padding-top:20px;
+}
+
+/*サイド(左)*/
+div#side2{
+	float:left;margin-top:10px;background-color:#FFFFFF;height:auto;width:17%;margin-left:20px;margin-right:20px;border: 1px solid #000000;padding-left:10px;padding-top:20px;
+}
+
+/*本文中央*/
+div#message1{
+	font-size:20px;text-align:center;padding-top:100px;
+}
+
+/*本文左下*/
+div#message2{
+	padding-left:10px;padding-top:175px;
+}
+
+/*topへ戻る*/
+div#under1{
+	width:100px;margin-left:1150px;
+}
+
+/*topへ戻る&前に戻る*/
+div#under2{
+	width:150px;margin-left:1050px;
+}
+
+/*topへ戻る(ログイン有り)*/
+div#under3{
+	width:100px;margin-left:800px;
+}
+
+/*テーブル*/
+table{
+	border-collapse: collapse;margin-left:20px;
+}
+td{
+	border: solid 1px;padding: 0.5em;
+}
+
+/*金額*/
+div#money{
+	text-align:right;margin-right:5px;float:right;
+}
+
+/*次へボタン*/
+div#button2{
+	margin-left:1100px;margin-bottom:50px;
+}
+
+/*確定ボタン*/
+div#button1{
+	margin-left:1100px;margin-bottom:50px;
+}
+
+/*購入ボタン*/
+div#button3{
+	width:100%;margin-left:75%;margin-bottom:20px;
+}
+
+/*届け先入力*/
+div#setting1{
+	margin-left:20px;
+}
+
+/*年月日入力*/
+div#setting2{
+	margin-left:40px;
+}
+
+/*ログインボタン*/
+div#setting3{
+	margin-left:auto;width:50%;
+}
+
+/*注文商品を確認する*/
+div#setting4{
+	font-size:18px;text-align:center;
+}
+
+/*商品画像と商品情報のバランス*/
+div#setting5{
+	display:inline-table;width:95%;
+}
+
+/*商品情報サイズ、個数入力フォーム*/
+div#setting6{
+	text-align:right;margin-right:10px;
+}
+/*top商品*/
+div#content{
+	margin-left:40px;margin-top:10px;width:15%;display:inline-table;border: 1px solid #000000;margin-bottom:10px;
+}
+
+/*商品情報*/
+div#productinfo{
+	margin-left:250px;margin-top:10px;border: 1px solid #000000;margin-bottom:10px;
+}
+
+/*商品画像*/
+div#picture{
+	float:left;display:
+}
