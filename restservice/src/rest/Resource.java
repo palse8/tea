@@ -4,6 +4,7 @@ package rest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,50 +22,52 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
+
 @Path("/rest")
-@MultipartConfig()
 public class Resource {
 	
 	@POST
 	@Path("/upload")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String callUpload(@Context HttpServletRequest request){
-		String json = null;
-		
-		System.out.println("call upload");
-		
-		try {
-			for (Part part : request.getParts()) {
-			    String fileName = "upload.zip";
-			    System.out.println(fileName);
-			    
-			    //part.write(uploadFilePath + File.separator + fileName);
-			    part.write(fileName);
-			}
-		} catch (IOException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		} catch (ServletException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+	public Response uploadFile(
+			@FormDataParam("upload") InputStream uploadedInputStream,
+			@FormDataParam("upload") FormDataContentDisposition fileDetail) {
+
+			String uploadedFileLocation = "/Users/-/Desktop/upload.zip";
+
+			// save it
+			writeToFile(uploadedInputStream, uploadedFileLocation);
+
+			String output = "File uploaded to : " + uploadedFileLocation;
+
+			return Response.status(200).entity(output).build();
+
 		}
-		
-//		try {
-//			Part part = request.getPart("upload");
-//			System.out.println(part.getSubmittedFileName());
-// 			System.out.println(part.getSize());
-//			part.write("/Users/hiro62521/Desktop/upload.zip");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} catch (ServletException e) {
-//			e.printStackTrace();
-//		}
-		
-		json = "{\"result\":\"SUCCESS\"}";
-		
-		return json;
-		
-	}
+
+		// save uploaded file to new location
+		private void writeToFile(InputStream uploadedInputStream,
+			String uploadedFileLocation) {
+
+			try {
+				OutputStream out = new FileOutputStream(new File(
+						uploadedFileLocation));
+				int read = 0;
+				byte[] bytes = new byte[1024];
+
+				out = new FileOutputStream(new File(uploadedFileLocation));
+				while ((read = uploadedInputStream.read(bytes)) != -1) {
+					out.write(bytes, 0, read);
+				}
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+
+		}
 	
 	@GET
 	@Path("/download")
@@ -73,7 +76,7 @@ public class Resource {
 		InputStream in = null;
 		OutputStream out = null;
 		
-		File file = new File("/Users/hiro62521/Desktop/test.zip");
+		File file = new File("/Users/-/Desktop/test.zip");
 		
 		response.setContentType("application/zip");
 		response.setHeader("Content-Disposition", "attachment; filename=download.zip"); 
